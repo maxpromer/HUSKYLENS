@@ -115,7 +115,7 @@ void HUSKYLENS::process(Driver *drv) {
 				break;
 			}
 
-			if (memcmp(buffer, (new uint8_t[5] { 0x55, 0xAA, 0x11, 0x0A, 0x29 }), 5) != 0) { // invalid header
+			if (memcmp(buffer, cmd_return_info, 5) != 0) { // invalid header
 				state = s_error;
 				ESP_LOGE(TAG, "COMMAND_RETURN_INFO invalid header");
 				break;
@@ -135,14 +135,14 @@ void HUSKYLENS::process(Driver *drv) {
 					break;
 				}
 
-				if (memcmp(buffer, (new uint8_t[5] { 0x55, 0xAA, 0x11, 0x0A, 0x2A }), 5) == 0) { // is COMMAND_RETURN_BLOCK header ?
+				if (memcmp(buffer, cmd_return_block, 5) == 0) { // is COMMAND_RETURN_BLOCK header ?
 					blocks[inx].type = IS_BLOCK;
 					blocks[inx].x = (buffer[6] << 8) | buffer[5];
 					blocks[inx].y = (buffer[8] << 8) | buffer[7];
 					blocks[inx].w = (buffer[10] << 8) | buffer[9];
 					blocks[inx].h = (buffer[12] << 8) | buffer[11];
 					blocks[inx].id = (buffer[14] << 8) | buffer[13];
-				} else if (memcmp(buffer, (new uint8_t[5] { 0x55, 0xAA, 0x11, 0x0A, 0x2B }), 5) == 0) { // is COMMAND_RETURN_ARROW header ?
+				} else if (memcmp(buffer, cmd_return_arrow, 5) == 0) { // is COMMAND_RETURN_ARROW header ?
 					blocks[inx].type = IS_ARROW;
 					blocks[inx].xs = (buffer[6] << 8) | buffer[5];
 					blocks[inx].ys = (buffer[8] << 8) | buffer[7];
