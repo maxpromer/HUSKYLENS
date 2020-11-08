@@ -13,23 +13,8 @@ HUSKYLENS::HUSKYLENS(int bus_ch, int dev_addr) {
 	polling_ms = HUSKYLENS_POLLING_MS;
 }
 
-void i2c_setClock(uint32_t clock) {
-	// Reset speed of I2C
-	i2c_config_t conf;
-
-	conf.mode = I2C_MODE_MASTER;
-	conf.sda_io_num = CHAIN_SDA_GPIO;
-	conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
-	conf.scl_io_num = CHAIN_SCL_GPIO;
-	conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
-	conf.master.clk_speed = clock;
-
-	i2c_param_config(I2C_NUM_1, &conf);
-}
-
 void HUSKYLENS::init(void) {
 	esp_log_level_set("*", ESP_LOG_VERBOSE);
-	i2c_setClock(100E3);
 
 	state = s_detect;
 }
