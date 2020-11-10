@@ -16,5 +16,5 @@ Blockly.Msg.HUSKYLENS_BLOCK_GET_SIZE_TOOLTIP = "อ่านขนาดขอ�
 Blockly.Msg.HUSKYLENS_ARROW_IS_READY_MESSAGE = "HUSKYLENS ลูกศรพร้อมอ่านข้อมูล ?";
 Blockly.Msg.HUSKYLENS_ARROW_IS_READY_TOOLTIP = "ตรวจสอบว่ามีลูกศรบนจอ HUSKYLENS หรือไม่";
 
-Blockly.Msg.HUSKYLENS_ARROW_GET_POS_MESSAGE = "HUSKYLENS อ่านค่าพิกัดลูกษรแกน %1";
+Blockly.Msg.HUSKYLENS_ARROW_GET_POS_MESSAGE = "HUSKYLENS อ่านค่าพิกัดลูกศรแกน %1";
 Blockly.Msg.HUSKYLENS_ARROW_GET_POS_TOOLTIP = "อ่านพิกัดของลูกศรบนจอ HUSKYLENS";
